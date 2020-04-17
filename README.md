@@ -1,4 +1,5 @@
 # COVID-19 DREAM Challenge: Baseline Model
+
 ## Overview
 This repository describes how to build and run locally the
 baseline model of the [COVID-19 DREAM Challenge](https://www.synapse.org/#!Synapse:syn18404605). The goal of this [DREAM Challenge](http://dreamchallenges.org/) is to develop models that take as input the electronic health records (EHRs) of a patient and outputs the probability of this patient tested positive for COVID-19.
@@ -61,3 +62,8 @@ where
 
 
 If the docker model runs successfully, the prediction file `predictions.csv` file will be created in the output folder. This file has two columns: 1) person_id and 2) test-positive probability. Note: make sure the column 2) contains no NA and the values are between 0 and 1.
+
+## Make a submission to COVID-19 DREAM challenge
+
+Please see this Synapse page for instructions on how to make a submission [link](https://www.synapse.org/#!Synapse:syn21849256/wiki/601875)
+
