@@ -5,8 +5,8 @@ This repository describes how to build and run locally the
 baseline model of the [COVID-19 DREAM Challenge](https://www.synapse.org/#!Synapse:syn18404605). The goal of this [DREAM Challenge](http://dreamchallenges.org/) is to develop models that take as input the electronic health records (EHRs) of a patient and outputs the probability of this patient tested positive for COVID-19.
 
 ## Description of the model
-This baseline model takes 15 features including clinical symptoms and vital signs. The baseline model refers to research conducted by Feng et al. [link](https://www.medrxiv.org/content/10.1101/2020.03.19.20039099v1)
-This baseline model isn't trained on any real COVID patient data. Each patient is given a risk score based on the presence of the 15 features. A threshold of risk score is chosen basing on 10% test positive rate in Washington state. Patients whose risk score is above threshold are assigned test-positive probability as 1, otherwise 0 in
+This baseline model takes 15 features including clinical symptoms and vital signs and refers to research conducted by Feng et al. [link](https://www.medrxiv.org/content/10.1101/2020.03.19.20039099v1)
+This baseline model isn't trained on any real COVID patient data. Each patient is given a risk score based on the presence of the 15 features. A threshold of risk score is chosen basing on 10% test positive rate in Washington state. Patients whose risk scores are above threshold are assigned test-positive probability as 1, otherwise 0.
 
 | Feature|OMOP concept-id|Domain|Threshold|
 |-|-|-|-|
