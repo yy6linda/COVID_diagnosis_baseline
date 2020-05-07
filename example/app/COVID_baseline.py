@@ -37,14 +37,13 @@ for i in measurement_feature.keys():
 condition
 | Feature|OMOP Code|Domain|Notes|
 |-|-|-|-|
-|cough|R05(45606792)|condition|-|
-|pain|R52.9(45544151)|condition|-|
-|shortness of breath|R06.0(45558449)|condition|-|
-|headache|R51(45558474)|condition|-|
-|sore throat|R07.0(45592406)|condition|-|
-|fatigue|R53.83(45534458)|condition|-|
+|cough|254761|condition|-|
+|pain in throat|259153|condition|-|
+|chest pain on breathing|4168213|condition|-|
+|headache|378253|condition|-|
+|fatigue|4223659|condition|-|
 '''
-condition_feature = ['45606792','45544151','45558449','45558474','45592406','45534458']
+condition_feature = ['254761','259153','4168213','378253','4223659']
 condition = pd.read_csv("./train/condition_occurrence.csv")
 condition = condition.dropna(subset=['condition_concept_id'])
 condition =condition.astype({"condition_concept_id": int})

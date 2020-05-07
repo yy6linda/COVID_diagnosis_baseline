@@ -6,7 +6,7 @@ baseline model of the [COVID-19 DREAM Challenge](https://www.synapse.org/#!Synap
 
 ## Description of the model
 This baseline model takes 15 features including clinical symptoms and vital signs and refers to research conducted by Feng et al. [link](https://www.medrxiv.org/content/10.1101/2020.03.19.20039099v1)
-This baseline model isn't trained on any real COVID patient data. Each patient is given a risk score based on the presence of the 15 features. A threshold of risk score is chosen basing on 10% test positive rate in Washington state. Patients whose risk scores are above threshold are assigned test-positive probability as 1, otherwise 0.
+This baseline model isn't trained on any real COVID patient data. Each patient is given a risk score based on the presence of the 14 features. A threshold of risk score is chosen basing on 10% test positive rate in Washington state. Patients whose risk scores are above threshold are assigned test-positive probability as 1, otherwise 0.
 
 | Feature|OMOP concept-id|Domain|Threshold|
 |-|-|-|-|
@@ -19,12 +19,11 @@ This baseline model isn't trained on any real COVID patient data. Each patient i
 |neutrophils|3013650|measurement|>8|
 |lymphocytes|3004327|measurement|>9.5|
 |oxygen saturation in artery blood|3016502|measurement|<94%|
-|cough|R05(45606792)|condition|-|
-|pain|R52.9(45544151)|condition|-|
-|shortness of breath|R06.0(45558449)|condition|-|
-|headache|R51(45558474)|condition|-|
-|sore throat|R07.0(45592406)|condition|-|
-|fatigue|R53.83(45534458)|condition|-|
+|cough|254761|condition|-|
+|pain in throat|259153|condition|-|
+|chest pain on breathing|4168213|condition|-|
+|headache|378253|condition|-|
+|fatigue|4223659|condition|-|
 
 
 ## Dockerize the model
@@ -66,4 +65,3 @@ If the docker model runs successfully, the prediction file `predictions.csv` fil
 ## Make a submission to COVID-19 DREAM challenge
 
 Please see this Synapse page for instructions on how to make a submission [link](https://www.synapse.org/#!Synapse:syn21849256/wiki/601875)
-
