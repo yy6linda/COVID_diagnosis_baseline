@@ -11,7 +11,7 @@ This baseline model isn't trained on any real COVID patient data. Each patient i
 | Feature|OMOP concept-id|Domain|Threshold|
 |-|-|-|-|
 |age|year_of_birth|person|>55|
-|temperature|3020891|measurement|>100.4F|
+|temperature|3020891|measurement|>37.5'C|
 |heart rate|3027018|measurement|>100n/min|
 |diastolic blood pressure|3012888|measurement|>85mmHg|
 |systolic blood pressure|3004249|measurement|>140mmHg|
@@ -19,11 +19,12 @@ This baseline model isn't trained on any real COVID patient data. Each patient i
 |neutrophils|3013650|measurement|>8|
 |lymphocytes|3004327|measurement|>9.5|
 |oxygen saturation in artery blood|3016502|measurement|<94%|
-|cough|254761|condition|-|
-|pain in throat|259153|condition|-|
-|chest pain on breathing|4168213|condition|-|
-|headache|378253|condition|-|
-|fatigue|4223659|condition|-|
+|cough|35211275|condition|-|
+|pain in throat|35211283|condition|-|
+|chest pain on breathing|35211284|condition|-|
+|headache|35211388|condition|-|
+|fatigue|45534458|condition|-|
+|shortness of breath|45534422|condition|-|
 
 
 ## Dockerize the model

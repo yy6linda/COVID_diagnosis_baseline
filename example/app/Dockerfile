@@ -11,12 +11,12 @@ RUN mkdir /app
 WORKDIR /app
 
 # Copy our python program for training and inference
-COPY ./COVID_baseline.py .
+COPY ./infer.py .
 
 
 # Copy Bash scripts expected by the IT infrastructure of the EHR DREAM Challenge
 
-COPY ./COVID_baseline.sh .
+COPY ./infer.sh .
 
 # Add executable permission to Bash scripts
-RUN chmod +x COVID_baseline.sh
+RUN chmod +x infer.sh

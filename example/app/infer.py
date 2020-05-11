@@ -1,10 +1,10 @@
-import pandas as pd
 import datetime as dt
 import numpy as np
 from datetime import date
+import pandas as pd
 
-measurement = pd.read_csv('./train/measurement.csv')
-measurement_feature = {'3020891':100.4,'3027018':100,'3012888':85,'3004249':140,
+measurement = pd.read_csv('/data/measurement.csv')
+measurement_feature = {'3020891':37.5,'3027018':100,'3012888':85,'3004249':140,
 '3023314':44,'3013650':8,'3004327':9.5,'3016502':94}
 measurement = measurement.dropna(subset=['measurement_concept_id'])
 measurement =measurement.astype({"measurement_concept_id": int})
@@ -15,7 +15,7 @@ feature = dict()
 | Feature|OMOP Code|Domain|Notes|
 |-|-|-|-|
 |age|-|person|>55|
-|temperature|3020891|measurement|>100.4F|
+|temperature|3020891|measurement|>37.5'|
 |heart rate|3027018|measurement|>100n/min|
 |diastolic blood pressure|3012888|measurement|>85mmHg|
 |systolic blood pressure|3004249|measurement|>140mmHg|
@@ -37,21 +37,22 @@ for i in measurement_feature.keys():
 condition
 | Feature|OMOP Code|Domain|Notes|
 |-|-|-|-|
-|cough|254761|condition|-|
-|pain in throat|259153|condition|-|
-|chest pain on breathing|4168213|condition|-|
-|headache|378253|condition|-|
-|fatigue|4223659|condition|-|
+|cough|35211275|condition|-|
+|pain in throat|35211283|condition|-|
+|chest pain on breathing|35211284|condition|-|
+|headache|35211388|condition|-|
+|fatigue|45534458|condition|-|
+|shortness of breath|45534422|condition|-|
 '''
-condition_feature = ['254761','259153','4168213','378253','4223659']
-condition = pd.read_csv("./train/condition_occurrence.csv")
+condition_feature = ['35211275','35211283','35211284','35211388','45534458','45534422']
+condition = pd.read_csv("/data/condition_occurrence.csv")
 condition = condition.dropna(subset=['condition_concept_id'])
 condition =condition.astype({"condition_concept_id": int})
 condition =condition.astype({"condition_concept_id": str})
 for i in condition_feature:
     subm = condition[condition['condition_concept_id']==i]
     feature[i] = set(subm_pos.person_id)
-person = pd.read_csv('./train/person.csv')
+person = pd.read_csv('/data/person.csv')
 today = date.today().year
 person['age']= person['year_of_birth'].apply(lambda x: today - x )
 sub = person[person['age']>55]
@@ -68,7 +69,7 @@ for i in feature.keys():
         index_p = person_index[person_id]
         index_feat_matrix[index_p,index_f]=1
 score = index_feat_matrix.sum(axis = 1)
-top_ratio = 0.05
+top_ratio = 0.07
 top_index = (-score).argsort()[:int(score.shape[0]*top_ratio)]
 top_index_list = list(top_index)
 top_person = []

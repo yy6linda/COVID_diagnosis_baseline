@@ -1,4 +1,4 @@
 
 #!/usr/bin/env bash
 
-python /app/COVID_baseline.py
+python /app/infer.py
