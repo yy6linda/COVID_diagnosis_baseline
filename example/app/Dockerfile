@@ -1,5 +1,9 @@
 FROM python:3.5
 
+LABEL challenge="covid19"
+LABEL ranked_features="cough, body temperature,hematocrit,diastolic blood pressure,systolic blood pressure"
+LABEL references="https://www.medrxiv.org/content/10.1101/2020.03.19.20039099v1"
+LABEL description="COVID diagnosis baseline prediction"
 # Install dependencies
 RUN pip install pandas \
   numpy \
