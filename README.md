@@ -8,23 +8,21 @@ baseline model of the [COVID-19 DREAM Challenge](https://www.synapse.org/#!Synap
 This baseline model takes 15 features including clinical symptoms and vital signs and refers to research conducted by Feng et al. [link](https://www.medrxiv.org/content/10.1101/2020.03.19.20039099v1)
 This baseline model isn't trained on any real COVID patient data. Each patient is given a risk score based on the presence of the 14 features. A threshold of risk score is chosen basing on 10% test positive rate in Washington state. Patients whose risk scores are above threshold are assigned test-positive probability as 1, otherwise 0.
 
-| Feature|OMOP concept-id|Domain|Threshold|
+| Feature|OMOP Code|Domain|Threshold|
 |-|-|-|-|
-|age|year_of_birth|person|>55|
-|temperature|3020891|measurement|>37.5'C|
+|age|-|person|>60|
+|temperature|3020891|measurement|>37.5'|
 |heart rate|3027018|measurement|>100n/min|
-|diastolic blood pressure|3012888|measurement|>85mmHg|
-|systolic blood pressure|3004249|measurement|>140mmHg|
-|hematocrit|3023314|measurement|>44|
+|diastolic blood pressure|3012888|measurement|>80mmHg|
+|systolic blood pressure|3004249|measurement|>120mmHg|
+|hematocrit|3023314|measurement|>52|
 |neutrophils|3013650|measurement|>8|
-|lymphocytes|3004327|measurement|>9.5|
-|oxygen saturation in artery blood|3016502|measurement|<94%|
-|cough|35211275|condition|-|
-|pain in throat|35211283|condition|-|
-|chest pain on breathing|35211284|condition|-|
-|headache|35211388|condition|-|
-|fatigue|45534458|condition|-|
-|shortness of breath|45534422|condition|-|
+|lymphocytes|3004327|measurement|>4.8|
+|oxygen saturation in artery blood|3016502|measurement|<95|
+|cough|254761|condition|-|
+|pain in throat|259153|condition|-|
+|headache|378253|condition|-|
+|fever|437663|condition|-|
 
 
 ## Dockerize the model

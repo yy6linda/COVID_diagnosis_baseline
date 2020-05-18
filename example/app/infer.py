@@ -4,8 +4,8 @@ from datetime import date
 import pandas as pd
 
 measurement = pd.read_csv('/data/measurement.csv')
-measurement_feature = {'3020891':37.5,'3027018':100,'3012888':85,'3004249':140,
-'3023314':44,'3013650':8,'3004327':9.5,'3016502':94}
+measurement_feature = {'3020891':37.5,'3027018':100,'3012888':80,'3004249':120,
+'3023314':52,'3013650':8,'3004327':4.8,'3016502':95}
 measurement = measurement.dropna(subset=['measurement_concept_id'])
 measurement =measurement.astype({"measurement_concept_id": int})
 measurement =measurement.astype({"measurement_concept_id": str})
@@ -14,15 +14,15 @@ feature = dict()
  measurement
 | Feature|OMOP Code|Domain|Notes|
 |-|-|-|-|
-|age|-|person|>55|
+|age|-|person|>60|
 |temperature|3020891|measurement|>37.5'|
 |heart rate|3027018|measurement|>100n/min|
-|diastolic blood pressure|3012888|measurement|>85mmHg|
-|systolic blood pressure|3004249|measurement|>140mmHg|
-|hematocrit|3023314|measurement|>44|
+|diastolic blood pressure|3012888|measurement|>80mmHg|
+|systolic blood pressure|3004249|measurement|>120mmHg|
+|hematocrit|3023314|measurement|>52|
 |neutrophils|3013650|measurement|>8|
-|lymphocytes|3004327|measurement|>9.5|
-|oxygen saturation in artery blood|3016502|measurement|<94%|
+|lymphocytes|3004327|measurement|>4.8|
+|oxygen saturation in artery blood|3016502|measurement|<95%|
 '''
 for i in measurement_feature.keys():
     subm = measurement[measurement['measurement_concept_id']==i]
@@ -37,25 +37,23 @@ for i in measurement_feature.keys():
 condition
 | Feature|OMOP Code|Domain|Notes|
 |-|-|-|-|
-|cough|35211275|condition|-|
-|pain in throat|35211283|condition|-|
-|chest pain on breathing|35211284|condition|-|
-|headache|35211388|condition|-|
-|fatigue|45534458|condition|-|
-|shortness of breath|45534422|condition|-|
+|cough|254761|condition|-|
+|pain in throat|259153|condition|-|
+|headache|378253|condition|-|
+|fever|437663|condition|-|
 '''
-condition_feature = ['35211275','35211283','35211284','35211388','45534458','45534422']
-condition = pd.read_csv("/data/condition_occurrence.csv")
+condition_feature = ['254761','437663','378253','259153']
+condition = pd.read_csv("./condition_occurrence.csv")
 condition = condition.dropna(subset=['condition_concept_id'])
-condition =condition.astype({"condition_concept_id": int})
-condition =condition.astype({"condition_concept_id": str})
+condition = condition.astype({"condition_concept_id": int})
+condition = condition.astype({"condition_concept_id": str})
 for i in condition_feature:
     subm = condition[condition['condition_concept_id']==i]
-    feature[i] = set(subm_pos.person_id)
-person = pd.read_csv('/data/person.csv')
+    feature[i] = set(subm.person_id)
+person = pd.read_csv('./person.csv')
 today = date.today().year
 person['age']= person['year_of_birth'].apply(lambda x: today - x )
-sub = person[person['age']>55]
+sub = person[person['age']>60]
 feature['age'] = set(sub.person_id)
 
 '''generate the feature set'''
